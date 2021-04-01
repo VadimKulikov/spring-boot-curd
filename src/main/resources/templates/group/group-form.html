@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+	
+<!-- JQuery -->
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    
+    <script type="text/javascript">
+   	 $(function() {
+    		$("#department_name").autocomplete({
+    			 source: "departmentAutocomplete",
+                 minLength: 1,
+    		});
+    	});
+	</script>
+
+<title>Сохранить группу</title>
+</head>
+
+<body>
+	<div class="container">
+		<h3>Группы</h3>
+		<hr>
+
+		<p class="h4 mb-4">Сохранить группу</p>
+
+		<form action="#" th:action="@{/group/save}" th:object="${group}"
+			method="POST">
+			<input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder="Название">
+			<input type="text" th:field="*{year}" class="form-control mb-4 col-4" placeholder="Год поступления">
+			<input type="text" id="department_name" th:field="*{department}" class="form-control mb-4 col-4" placeholder="Кафедра">
+
+
+			
+			<!--  <select class="form-control selectpicker mb-4 col-4" th:field="*{department}" name="departmentId">
+				<option th:each="tempFaculty : ${faculties}" th:value="${tempFaculty.id}" th:text="${tempFaculty.name}"> </option>
+			</select> -->
+			<button type="submit" class="btn btn-info col-2">Сохранить</button>
+		</form>
+		<hr>
+		<a th:href="@{/group/list}">К списку групп</a>
+	</div>
+</body>
+
+</html>

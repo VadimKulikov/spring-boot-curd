@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+
+<title>Группы</title>
+</head>
+
+<body>
+
+	<div class="container">
+
+		<h3>Группы</h3>
+		<hr>
+		<a th:href="@{/group/showFormForAdd}"
+			class="btn btn-primary btn-sm mb-3"> Добавить группу </a>
+
+
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Название</th>
+					<th>Год</th>
+					<th>Кафедра</th>
+					<th>Действие</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="tempGroup : ${groups}">
+
+					<td> <a th:href="@{'/student/list/'+${tempGroup.name}}">[[${tempGroup.name}]]</a></td>
+					<td th:text="${tempGroup.year}" />
+					<td th:text="${tempGroup.department} ? ${tempGroup.department.name} : 'Не назначена'" />
+					<td><a
+						th:href="@{/group/showFormForUpdate (groupId=${tempGroup.name})}"
+						class="btn btn-info btn-sm">Обновить</a> <a
+						th:href="@{/group/delete (groupId=${tempGroup.name})}"
+						class="btn btn-danger btn-sm"
+						onclick="if (!(confirm('Удалить?'))) return false">Удалить</a></td>
+
+				</tr>
+			</tbody>
+		</table>
+		<div>
+			Всего: [[${totalItems}]]
+			<ul class="pagination">
+				<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+					<li class="page-item"><a class="page-link" th:href="@{'/group/list/'+${i}}">[[${i}]]</a></li>
+				</span>
+
+			</ul>
+		</div>
+
+		<hr>
+		<a th:href="@{/}">В главное меню</a>
+
+	</div>
+</body>
+</html>
+
+
+
