@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+
+<title>Студенты</title>
+</head>
+
+<body>
+
+	<div class="container">
+
+		<h3>[[${groupName}]]</h3>
+		<hr>
+		<a th:href="@{'/student/'+${groupName}+'/showFormForAdd'}"
+			class="btn btn-primary btn-sm mb-3"> Добавить студента </a>
+
+
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>ID</th>
+					<th>Имя</th>
+					<th>Фамилия</th>
+					<th>Отчество</th>
+					<th>Номер аттестата</th>
+					<th>Действие</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="tempStudent : ${students}">
+
+					<td th:text="${tempStudent.id}" />
+					<td th:text="${tempStudent.name}" />
+					<td th:text="${tempStudent.surname}" />
+					<td th:text="${tempStudent.patrynomic}" />
+					<td th:text="${tempStudent.schoolDiploma.number}" />
+					<td><a
+						th:href="@{/student/showFormForUpdate (studentId=${tempStudent.id})}"
+						class="btn btn-info btn-sm">Обновить</a> <a
+						th:href="@{/student/delete (studentId=${tempStudent.id})}"
+						class="btn btn-danger btn-sm"
+						onclick="if (!(confirm('Удалить?'))) return false">Удалить</a></td>
+
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<a th:href="@{/group/list}">К списку групп</a>
+
+	</div>
+</body>
+</html>
+
+
+
