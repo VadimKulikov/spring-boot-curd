@@ -30,6 +30,10 @@ public class Department {
 			CascadeType.REFRESH })
 	private Set<Group> groups; 
 	
+	@OneToMany(fetch=FetchType.LAZY,mappedBy = "department", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+			CascadeType.REFRESH })
+	private Set<Teacher> teachers;
+	
 	
 	public Department() {
 		
@@ -64,14 +68,15 @@ public class Department {
 		this.groups = groups;
 	}
 
+	public Set<Teacher> getTeachers() {
+		return teachers;
+	}
+
+	public void setTeachers(Set<Teacher> teachers) {
+		this.teachers = teachers;
+	}
+
 	
-//	public List<Group> getGroups() {
-//		return groups;
-//	}
-//
-//	public void setGroups(List<Group> groups) {
-//		this.groups = groups;
-//	}
 	
 	
 }

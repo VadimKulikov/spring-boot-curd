@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.kvs.universityapplication.entity.Department;
-import com.kvs.universityapplication.entity.Faculty;
+
 import com.kvs.universityapplication.entity.SchoolDiploma;
 import com.kvs.universityapplication.entity.Student;
 import com.kvs.universityapplication.service.GroupService;
@@ -24,12 +24,10 @@ public class StudentController {
 	
 	private StudentService studentService;
 	private GroupService groupService;
-	private SchoolDiplomaService schoolDiplomaService;
 	
 	public StudentController(StudentService studentService, GroupService groupService,SchoolDiplomaService schoolDiplomaService) {
 		this.studentService = studentService;
 		this.groupService = groupService;
-		this.schoolDiplomaService = schoolDiplomaService;
 	}
 	
 	@GetMapping("/list/{groupName}")
@@ -61,4 +59,21 @@ public class StudentController {
 		studentService.save(student);
 		return "redirect:/student/list/{groupName}";
 	}
+	
+	@GetMapping("/{groupName}/showFormForUpdate")
+	public String showFormForUpdate(@RequestParam("studentId") int id, Model theModel, @PathVariable("groupName") String groupName) {
+		
+		Student student = studentService.findById(id);
+		theModel.addAttribute("student", student);
+		
+		return "student/student-form";
+	}
+	
+	@GetMapping("/{groupName}/delete")
+	public String deleteFaculty(@RequestParam("studentId") int id) {
+		studentService.deleteById(id);
+		
+		return "redirect:/student/list/{groupName}";
+	}
+	
 }

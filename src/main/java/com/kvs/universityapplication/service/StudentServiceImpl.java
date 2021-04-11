@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.kvs.universityapplication.dao.StudentRepository;
-import com.kvs.universityapplication.entity.Group;
 import com.kvs.universityapplication.entity.Student;
 
 @Service
@@ -47,8 +46,8 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public void deleteById(String theId) {
-		studentRepository.deleteById(null);
+	public void deleteById(int theId) {
+		studentRepository.deleteById(theId);
 		
 	}
 

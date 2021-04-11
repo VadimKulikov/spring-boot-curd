@@ -2,7 +2,6 @@ package com.kvs.universityapplication.service;
 
 import java.util.List;
 
-import com.kvs.universityapplication.entity.Group;
 import com.kvs.universityapplication.entity.Student;
 
 public interface StudentService {
@@ -15,6 +14,6 @@ public interface StudentService {
 
 	public void save(Student student);
 
-	public void deleteById(String theId);
+	public void deleteById(int theId);
 
 }

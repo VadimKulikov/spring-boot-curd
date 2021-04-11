@@ -47,9 +47,9 @@
 					<td th:text="${tempStudent.patrynomic}" />
 					<td th:text="${tempStudent.schoolDiploma.number}" />
 					<td><a
-						th:href="@{/student/showFormForUpdate (studentId=${tempStudent.id})}"
+						th:href="@{'/student/'+${groupName}+'/showFormForUpdate' (studentId=${tempStudent.id})}"
 						class="btn btn-info btn-sm">Обновить</a> <a
-						th:href="@{/student/delete (studentId=${tempStudent.id})}"
+						th:href="@{'/student/'+${groupName}+'/delete' (studentId=${tempStudent.id})}"
 						class="btn btn-danger btn-sm"
 						onclick="if (!(confirm('Удалить?'))) return false">Удалить</a></td>
 
