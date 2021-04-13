@@ -13,43 +13,39 @@
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
 	crossorigin="anonymous">
 
-<title>Преподаватели</title>
+<title>Дисциплины</title>
 </head>
 
 <body>
 
 	<div class="container">
 
-		<h3>Преподаватели</h3>
+		<h3>Дисциплины</h3>
 		<hr>
-		<a th:href="@{/teacher/showFormForAdd}"
-			class="btn btn-primary btn-sm mb-3"> Добавить преподавателя </a>
+		<a th:href="@{/discipline/showFormForAdd}"
+			class="btn btn-primary btn-sm mb-3"> Добавить дисциплину </a>
 
 
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<th>Имя</th>
-					<th>Фамилия</th>
-					<th>Отчество</th>
-					<th>Преподаваемые дисциплины</th>
-					
+					<th>Название</th>
+					<th>Продолжительность</th>
+					<th>Семестр</th>
 					<th>Действие</th>
 				</tr>
 			</thead>
 
 			<tbody>
-				<tr th:each="tempTeacher : ${teachers}">
+				<tr th:each="tempDiscipline : ${disciplines}">
 
-					<!--  <td> <a th:href="@{'/discipline/list/'+${tempTeacher.name}}">[[${tempTeacher.name}]]</a></td> -->
-					<td th:text="${tempTeacher.name}" />
-					<td th:text="${tempTeacher.surname}" />
-					<td th:text="${tempTeacher.patronymic}" />
-					<td th:text="${tempTeacher.disciplines}" />
+					<td th:text="${tempDiscipline.name}" />
+					<td th:text="${tempDiscipline.duration}" />
+					<td th:text="${tempDiscipline.semester}" />
 					<td><a
-						th:href="@{/teacher/showFormForUpdate (teacherId=${tempTeacher.id})}"
+						th:href="@{/discipline/showFormForUpdate (disciplineId=${tempDiscipline.name})}"
 						class="btn btn-info btn-sm">Обновить</a> <a
-						th:href="@{/teacher/delete (teacherId=${tempTeacher.id})}"
+						th:href="@{/discipline/delete (disciplineId=${tempDiscipline.name})}"
 						class="btn btn-danger btn-sm"
 						onclick="if (!(confirm('Удалить?'))) return false">Удалить</a></td>
 
@@ -60,7 +56,7 @@
 			Всего: [[${totalItems}]]
 			<ul class="pagination">
 				<span th:each="i: ${#numbers.sequence(1, totalPages)}">
-					<li class="page-item"><a class="page-link" th:href="@{'/teacher/list/'+${i}}">[[${i}]]</a></li>
+					<li class="page-item"><a class="page-link" th:href="@{'/discipline/list/'+${i}}">[[${i}]]</a></li>
 				</span>
 
 			</ul>

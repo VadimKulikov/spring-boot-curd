@@ -91,7 +91,7 @@ public class GroupController {
 	}
 	
 	@GetMapping("/delete")
-	public String deleteFaculty(@RequestParam("groupId") String name) {
+	public String deleteGroup(@RequestParam("groupId") String name) {
 		groupService.deleteById(name);
 		
 		return "redirect:/group/list";

@@ -1,5 +1,8 @@
 package com.kvs.universityapplication.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -27,7 +32,7 @@ public class Teacher {
 	private String surname;
 	
 	@Column(name="patronymic")
-	private String patrynomic;
+	private String patronymic;
 	
 	@ManyToOne(fetch=FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE,
 			CascadeType.PERSIST, CascadeType.REFRESH})
@@ -36,6 +41,14 @@ public class Teacher {
 	
 	@Column(name="academic_title")
 	private String academicTitle;
+	
+	@ManyToMany()
+	@JoinTable(
+			name="teacher_discipline",
+			joinColumns= @JoinColumn(name="teacher_id"),
+			inverseJoinColumns = @JoinColumn(name="discipline_name")
+			)
+	private Set<Discipline> disciplines = new HashSet<>();
 	
 	public Teacher() {
 		
@@ -65,12 +78,12 @@ public class Teacher {
 		this.surname = surname;
 	}
 
-	public String getPatrynomic() {
-		return patrynomic;
+	public String getPatronymic() {
+		return patronymic;
 	}
 
-	public void setPatrynomic(String patrynomic) {
-		this.patrynomic = patrynomic;
+	public void setPatronymic(String patronymic) {
+		this.patronymic = patronymic;
 	}
 
 	public Department getDepartment() {
@@ -88,6 +101,16 @@ public class Teacher {
 	public void setAcademicTitle(String academicTitle) {
 		this.academicTitle = academicTitle;
 	}
+
+	public Set<Discipline> getDisciplines() {
+		return disciplines;
+	}
+
+	public void setDisciplines(Set<Discipline> disciplines) {
+		this.disciplines = disciplines;
+	}
+	
+	
 	
 	
 	

@@ -81,7 +81,7 @@ public class DepartmentController {
 	}
 	
 	@GetMapping("/delete")
-	public String deleteFaculty(@RequestParam("departmentId") String name) {
+	public String deleteDepartment(@RequestParam("departmentId") String name) {
 		departmentService.deleteById(name);
 		
 		return "redirect:/department/list";

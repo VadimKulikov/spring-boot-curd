@@ -9,6 +9,6 @@ import com.kvs.universityapplication.entity.Teacher;
 
 public interface TeacherRepository extends JpaRepository<Teacher, Integer> {
 	
-	@EntityGraph(attributePaths = {"department"})
+	@EntityGraph(attributePaths = {"department", "disciplines"})
 	Page<Teacher> findAll(Pageable pageable);
 }
