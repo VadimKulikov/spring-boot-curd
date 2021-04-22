@@ -39,8 +39,8 @@
 
 		<form action="#" th:action="@{/group/save}" th:object="${group}"
 			method="POST">
-			<input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder="Название">
-			<input type="text" th:field="*{year}" class="form-control mb-4 col-4" placeholder="Год поступления">
+			<input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder="Название" required>
+			<input type="text" th:field="*{year}" class="form-control mb-4 col-4" placeholder="Год поступления" required>
 			<input type="text" id="department_name" th:field="*{department}" class="form-control mb-4 col-4" placeholder="Кафедра">
 
 

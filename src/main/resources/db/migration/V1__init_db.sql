@@ -27,6 +27,8 @@ SET default_table_access_method = heap;
 -- Name: department; Type: TABLE; Schema: public; Owner: postgres
 --
 
+DROP TABLE IF EXISTS public.department CASCADE;
+
 CREATE TABLE public.department (
     name character varying(256) NOT NULL,
     faculty_id integer
@@ -39,6 +41,8 @@ ALTER TABLE public.department OWNER TO postgres;
 -- TOC entry 206 (class 1259 OID 24829)
 -- Name: discipline; Type: TABLE; Schema: public; Owner: postgres
 --
+
+DROP TABLE IF EXISTS public.discipline CASCADE;
 
 CREATE TABLE public.discipline (
     name character varying(256) NOT NULL,
@@ -53,6 +57,7 @@ ALTER TABLE public.discipline OWNER TO postgres;
 -- TOC entry 201 (class 1259 OID 24787)
 -- Name: faculty; Type: TABLE; Schema: public; Owner: postgres
 --
+DROP TABLE IF EXISTS public.faculty CASCADE;
 
 CREATE TABLE public.faculty (
     id integer NOT NULL,
@@ -91,6 +96,7 @@ ALTER SEQUENCE public.faculty_id_seq OWNED BY public.faculty.id;
 -- TOC entry 207 (class 1259 OID 24839)
 -- Name: grade; Type: TABLE; Schema: public; Owner: postgres
 --
+DROP TABLE IF EXISTS public.grade CASCADE;
 
 CREATE TABLE public.grade (
     code character varying(8) NOT NULL,
@@ -104,6 +110,7 @@ ALTER TABLE public.grade OWNER TO postgres;
 -- TOC entry 203 (class 1259 OID 24803)
 -- Name: groups; Type: TABLE; Schema: public; Owner: postgres
 --
+DROP TABLE IF EXISTS public.groups CASCADE;
 
 CREATE TABLE public.groups (
     name character varying(16) NOT NULL,
@@ -118,6 +125,7 @@ ALTER TABLE public.groups OWNER TO postgres;
 -- TOC entry 212 (class 1259 OID 24880)
 -- Name: performance; Type: TABLE; Schema: public; Owner: postgres
 --
+DROP TABLE IF EXISTS public.performance CASCADE;
 
 CREATE TABLE public.performance (
     student_id integer NOT NULL,
@@ -132,6 +140,7 @@ ALTER TABLE public.performance OWNER TO postgres;
 -- TOC entry 209 (class 1259 OID 24855)
 -- Name: school_diploma; Type: TABLE; Schema: public; Owner: postgres
 --
+DROP TABLE IF EXISTS public.school_diploma CASCADE;
 
 CREATE TABLE public.school_diploma (
     number bigint NOT NULL,
@@ -145,6 +154,7 @@ ALTER TABLE public.school_diploma OWNER TO postgres;
 -- TOC entry 211 (class 1259 OID 24862)
 -- Name: student; Type: TABLE; Schema: public; Owner: postgres
 --
+DROP TABLE IF EXISTS public.student CASCADE;
 
 CREATE TABLE public.student (
     id integer NOT NULL,
@@ -187,6 +197,7 @@ ALTER SEQUENCE public.student_id_seq OWNED BY public.student.id;
 -- TOC entry 205 (class 1259 OID 24815)
 -- Name: teacher; Type: TABLE; Schema: public; Owner: postgres
 --
+DROP TABLE IF EXISTS public.teacher CASCADE;
 
 CREATE TABLE public.teacher (
     id integer NOT NULL,
@@ -204,6 +215,7 @@ ALTER TABLE public.teacher OWNER TO postgres;
 -- TOC entry 213 (class 1259 OID 24929)
 -- Name: teacher_discipline; Type: TABLE; Schema: public; Owner: postgres
 --
+DROP TABLE IF EXISTS public.teacher_discipline CASCADE;
 
 CREATE TABLE public.teacher_discipline (
     teacher_id integer NOT NULL,
@@ -242,6 +254,8 @@ ALTER SEQUENCE public.teacher_id_seq OWNED BY public.teacher.id;
 -- TOC entry 208 (class 1259 OID 24847)
 -- Name: type_of_control; Type: TABLE; Schema: public; Owner: postgres
 --
+
+DROP TABLE IF EXISTS public.type_of_control CASCADE;
 
 CREATE TABLE public.type_of_control (
     name character varying(128) NOT NULL,

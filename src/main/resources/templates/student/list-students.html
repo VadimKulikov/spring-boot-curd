@@ -32,7 +32,6 @@
 					<th>ID</th>
 					<th>Имя</th>
 					<th>Фамилия</th>
-					<th>Отчество</th>
 					<th>Номер аттестата</th>
 					<th>Действие</th>
 				</tr>
@@ -44,7 +43,6 @@
 					<td th:text="${tempStudent.id}" />
 					<td th:text="${tempStudent.name}" />
 					<td th:text="${tempStudent.surname}" />
-					<td th:text="${tempStudent.patrynomic}" />
 					<td th:text="${tempStudent.schoolDiploma.number}" />
 					<td><a
 						th:href="@{'/student/'+${groupName}+'/showFormForUpdate' (studentId=${tempStudent.id})}"

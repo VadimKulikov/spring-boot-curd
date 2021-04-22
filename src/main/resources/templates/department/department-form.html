@@ -25,8 +25,12 @@
 
 		<form action="#" th:action="@{/department/save}" th:object="${department}"
 			method="POST">
+			<input type="text" th:field="*{abbr}" class="form-control mb-4 col-4"
+				placeholder="Аббревиатура" required>
+				
 			<input type="text" th:field="*{name}" class="form-control mb-4 col-4"
-				placeholder="Название">
+				placeholder="Полное название" required>
+				
 			<select class="form-control selectpicker mb-4 col-4" th:field="*{faculty}" name="facultyId">
 								<option th:each="tempFaculty : ${faculties}"
                                 th:value="${tempFaculty.id}"

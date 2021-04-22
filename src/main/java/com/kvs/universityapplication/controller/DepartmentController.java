@@ -36,9 +36,9 @@ public class DepartmentController {
 	}
 	
 	@GetMapping("/showFormForUpdate")
-	public String showFormForUpdate(@RequestParam("departmentId") String name, Model theModel) {
+	public String showFormForUpdate(@RequestParam("departmentId") String abbr, Model theModel) {
 		
-		Department department = departmentService.findById(name);
+		Department department = departmentService.findById(abbr);
 		List<Faculty> faculties = facultyService.findAll();
 		
 		theModel.addAttribute("department", department);
@@ -81,8 +81,8 @@ public class DepartmentController {
 	}
 	
 	@GetMapping("/delete")
-	public String deleteDepartment(@RequestParam("departmentId") String name) {
-		departmentService.deleteById(name);
+	public String deleteDepartment(@RequestParam("departmentId") String abbr) {
+		departmentService.deleteById(abbr);
 		
 		return "redirect:/department/list";
 	}

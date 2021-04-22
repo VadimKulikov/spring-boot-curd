@@ -15,6 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="student")
 public class Student {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
@@ -26,8 +27,8 @@ public class Student {
 	@Column(name="surname")
 	private String surname;
 	
-	@Column(name="patrynomic")
-	private String patrynomic;
+	
+	//удалить
 	
 	@ManyToOne(fetch=FetchType.LAZY, cascade= {CascadeType.DETACH, CascadeType.MERGE,
 			CascadeType.PERSIST, CascadeType.REFRESH})
@@ -61,15 +62,7 @@ public class Student {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-
-	public String getPatrynomic() {
-		return patrynomic;
-	}
-
-	public void setPatrynomic(String patrynomic) {
-		this.patrynomic = patrynomic;
-	}
-
+	
 	public Group getGroup() {
 		return group;
 	}
