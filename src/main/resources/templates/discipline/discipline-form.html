@@ -25,9 +25,9 @@
 
 		<form action="#" th:action="@{/discipline/save}" th:object="${discipline}"
 			method="POST">
-			<input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder="Название">
-			<input type="text" th:field="*{duration}" class="form-control mb-4 col-4" placeholder="Продолжительность">
-			<input type="text" th:field="*{semester}" class="form-control mb-4 col-4" placeholder="Семестр">
+			<input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder="Название" required>
+			<input type="text" th:field="*{duration}" class="form-control mb-4 col-4" placeholder="Продолжительность" required>
+			<input type="text" th:field="*{semester}" class="form-control mb-4 col-4" placeholder="Семестр" required>
 
 
 			<button type="submit" class="btn btn-info col-2">Сохранить</button>

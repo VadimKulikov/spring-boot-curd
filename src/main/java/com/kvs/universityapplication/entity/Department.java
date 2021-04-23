@@ -17,7 +17,11 @@ import javax.persistence.Table;
 @Table(name="department")
 public class Department {
 	
+	// сделать аббревиатуру
 	@Id
+	@Column(name="abbr")
+	private String abbr;
+	
 	@Column(name="name")
 	private String name;
 	
@@ -57,7 +61,7 @@ public class Department {
 
 	@Override
 	public String toString() {
-		return name;
+		return abbr;
 	}
 
 	public Set<Group> getGroups() {
@@ -74,6 +78,14 @@ public class Department {
 
 	public void setTeachers(Set<Teacher> teachers) {
 		this.teachers = teachers;
+	}
+
+	public String getAbbr() {
+		return abbr;
+	}
+
+	public void setAbbr(String abbr) {
+		this.abbr = abbr;
 	}
 
 	

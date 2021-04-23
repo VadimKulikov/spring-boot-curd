@@ -40,12 +40,12 @@
 		<form action="#" th:action="@{/teacher/save}" th:object="${teacher}"
 			method="POST">
 			<input type="hidden" th:field="*{id}">
-			<input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder="Имя">
-			<input type="text" th:field="*{surname}" class="form-control mb-4 col-4" placeholder="Фамилия">
-			<input type="text" th:field="*{patronymic}" class="form-control mb-4 col-4" placeholder="Отчество">
+			<input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder="Имя" required>
+			<input type="text" th:field="*{surname}" class="form-control mb-4 col-4" placeholder="Фамилия" required>
+			<input type="text" th:field="*{patronymic}" class="form-control mb-4 col-4" placeholder="Отчество" required>
 			<input type="text" th:field="*{disciplines}" class="form-control mb-4 col-4" placeholder="Преподаваемые дисциплины">
-			<input type="text" id="department_name" th:field="*{department}" class="form-control mb-4 col-4" placeholder="Кафедра">
-			<input type="text" th:field="*{academicTitle}" class="form-control mb-4 col-4" placeholder="Ученое звание">
+			<input type="text" id="department_name" th:field="*{department}" class="form-control mb-4 col-4" placeholder="Кафедра" required>
+			<input type="text" th:field="*{academicTitle}" class="form-control mb-4 col-4" placeholder="Ученое звание" required>
 
 			<button type="submit" class="btn btn-info col-2">Сохранить</button>
 		</form>
