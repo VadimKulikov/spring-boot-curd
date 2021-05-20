@@ -33,7 +33,7 @@
 					<th>Фамилия</th>
 					<th>Отчество</th>
 					<th>Преподаваемые дисциплины</th>
-					
+
 					<th>Действие</th>
 				</tr>
 			</thead>
@@ -60,7 +60,8 @@
 			Всего: [[${totalItems}]]
 			<ul class="pagination">
 				<span th:each="i: ${#numbers.sequence(1, totalPages)}">
-					<li class="page-item"><a class="page-link" th:href="@{'/teacher/list/'+${i}}">[[${i}]]</a></li>
+					<li class="page-item"><a class="page-link"
+						th:href="@{'/teacher/list/'+${i}}">[[${i}]]</a></li>
 				</span>
 
 			</ul>

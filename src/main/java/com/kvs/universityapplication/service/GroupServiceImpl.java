@@ -1,14 +1,13 @@
 package com.kvs.universityapplication.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.kvs.universityapplication.dao.GroupRepository;
+import com.kvs.universityapplication.dao.GroupSqlRepository;
 import com.kvs.universityapplication.entity.Group;
 
 @Service
@@ -16,9 +15,9 @@ public class GroupServiceImpl implements GroupService {
 
 	private final int PAGE_SIZE = 10;
 
-	private GroupRepository groupRepository;
+	private GroupSqlRepository groupRepository;
 
-	public GroupServiceImpl(GroupRepository groupRepository) {
+	public GroupServiceImpl(GroupSqlRepository groupRepository) {
 		this.groupRepository = groupRepository;
 	}
 
@@ -29,14 +28,8 @@ public class GroupServiceImpl implements GroupService {
 
 	@Override
 	public Group findById(String theId) {
-		Optional<Group> result = groupRepository.findById(theId);
-		Group group = null;
-		if (result.isPresent()) {
-			group = result.get();
-		} else {
-			throw new RuntimeException("Didnt't find group");
-		}
-		return group;
+
+		return groupRepository.findById(theId);
 	}
 
 	@Override

@@ -1,26 +1,25 @@
 package com.kvs.universityapplication.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.kvs.universityapplication.dao.DepartmentRepository;
+import com.kvs.universityapplication.dao.DepartmentSqlRepository;
 import com.kvs.universityapplication.entity.Department;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
-	
-	private DepartmentRepository departmentRepository;
+
+	private DepartmentSqlRepository departmentRepository;
 	private final int PAGE_SIZE = 10;
-	
-	public DepartmentServiceImpl(DepartmentRepository departmentRepository) {
+
+	public DepartmentServiceImpl(DepartmentSqlRepository departmentRepository) {
 		this.departmentRepository = departmentRepository;
 	}
-	
+
 	@Override
 	public List<Department> findAll() {
 		return departmentRepository.findAll();
@@ -28,14 +27,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	@Override
 	public Department findById(String theId) {
-		Optional<Department> result = departmentRepository.findById(theId);
-		Department department = null;
-		if(result.isPresent()) {
-			department = result.get();
-		} else {
-			throw new RuntimeException("Didn't find department");
-		}
-		return department;
+		return departmentRepository.findById(theId);
 	}
 
 	@Override

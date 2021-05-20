@@ -25,8 +25,8 @@
 
 		<form action="#" th:action="@{/faculty/save}" th:object="${faculty}"
 			method="POST">
-			<input type="hidden" th:field="*{id}">
-			<input type="text" th:field="*{name}" class="form-control mb-4 col-4"
+			<input type="hidden" th:field="*{id}"> <input type="text"
+				th:field="*{name}" class="form-control mb-4 col-4"
 				placeholder="Название" required>
 
 			<button type="submit" class="btn btn-info col-2">Сохранить</button>

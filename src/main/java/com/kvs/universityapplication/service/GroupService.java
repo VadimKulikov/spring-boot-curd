@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 import com.kvs.universityapplication.entity.Group;
 
 public interface GroupService {
-	
+
 	public List<Group> findAll();
 
 	public Group findById(String theId);

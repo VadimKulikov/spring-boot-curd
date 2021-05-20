@@ -22,21 +22,21 @@ import com.kvs.universityapplication.service.TeacherService;
 @Controller
 @RequestMapping("/teacher")
 public class TeacherController {
-	
+
 	private TeacherService teacherService;
 	private DepartmentService departmentService;
-	
+
 	public TeacherController(TeacherService teacherService, DepartmentService departmentService) {
 		this.teacherService = teacherService;
 		this.departmentService = departmentService;
 	}
-	
+
 	@GetMapping("/list")
 	public String listGroups(Model theModel) {
 
 		return listByPage(theModel, 1);
 	}
-	
+
 	@GetMapping("/list/{pageNumber}")
 	public String listByPage(Model theModel, @PathVariable("pageNumber") int currentPageNum) {
 		Page<Teacher> currentPage = teacherService.findPaginated(currentPageNum);
@@ -49,7 +49,7 @@ public class TeacherController {
 
 		return "teacher/list-teachers";
 	}
-	
+
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(Model theModel) {
 
@@ -59,7 +59,7 @@ public class TeacherController {
 
 		return "teacher/teacher-form";
 	}
-	
+
 	@GetMapping("/departmentAutocomplete")
 	@ResponseBody
 	public List<String> departmentNamesAutocomplete(@RequestParam(value = "term", defaultValue = "") String term) {
@@ -67,31 +67,31 @@ public class TeacherController {
 		List<String> departmentNames = new ArrayList<>();
 		for (Department d : departments) {
 			if (d.getName().contains(term)) {
-				departmentNames.add(d.getName());
+				departmentNames.add(d.getAbbr());
 			}
 		}
 		return departmentNames;
 	}
-	
+
 	@PostMapping("/save")
 	public String saveGroup(@ModelAttribute("teacher") Teacher teacher) {
 		teacherService.save(teacher);
 		return "redirect:/teacher/list";
 	}
-	
+
 	@GetMapping("/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("teacherId") int id, Model theModel) {
-		
+
 		Teacher teacher = teacherService.findById(id);
 		theModel.addAttribute("teacher", teacher);
-		
+
 		return "teacher/teacher-form";
 	}
-	
+
 	@GetMapping("/delete")
 	public String deleteTeacher(@RequestParam("teacherId") int id) {
 		teacherService.deleteById(id);
-		
+
 		return "redirect:/teacher/list";
 	}
 }

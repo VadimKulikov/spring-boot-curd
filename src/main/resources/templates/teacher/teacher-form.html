@@ -12,13 +12,14 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
 	crossorigin="anonymous">
-	
+
 <!-- JQuery -->
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    
-    <script type="text/javascript">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script type="text/javascript">
    	 $(function() {
     		$("#department_name").autocomplete({
     			 source: "departmentAutocomplete",
@@ -39,13 +40,19 @@
 
 		<form action="#" th:action="@{/teacher/save}" th:object="${teacher}"
 			method="POST">
-			<input type="hidden" th:field="*{id}">
-			<input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder="Имя" required>
-			<input type="text" th:field="*{surname}" class="form-control mb-4 col-4" placeholder="Фамилия" required>
-			<input type="text" th:field="*{patronymic}" class="form-control mb-4 col-4" placeholder="Отчество" required>
-			<input type="text" th:field="*{disciplines}" class="form-control mb-4 col-4" placeholder="Преподаваемые дисциплины">
-			<input type="text" id="department_name" th:field="*{department}" class="form-control mb-4 col-4" placeholder="Кафедра" required>
-			<input type="text" th:field="*{academicTitle}" class="form-control mb-4 col-4" placeholder="Ученое звание" required>
+			<input type="hidden" th:field="*{id}"> <input type="text"
+				th:field="*{name}" class="form-control mb-4 col-4" placeholder="Имя"
+				required> <input type="text" th:field="*{surname}"
+				class="form-control mb-4 col-4" placeholder="Фамилия" required>
+			<input type="text" th:field="*{patronymic}"
+				class="form-control mb-4 col-4" placeholder="Отчество" required>
+			<input type="text" th:field="*{disciplines}"
+				class="form-control mb-4 col-4"
+				placeholder="Преподаваемые дисциплины"> <input type="text"
+				id="department_name" th:field="*{department}"
+				class="form-control mb-4 col-4" placeholder="Кафедра" required>
+			<input type="text" th:field="*{academicTitle}"
+				class="form-control mb-4 col-4" placeholder="Ученое звание" required>
 
 			<button type="submit" class="btn btn-info col-2">Сохранить</button>
 		</form>

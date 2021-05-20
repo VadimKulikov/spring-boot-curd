@@ -23,20 +23,18 @@
 
 		<p class="h4 mb-4">Сохранить кафедру</p>
 
-		<form action="#" th:action="@{/department/save}" th:object="${department}"
-			method="POST">
+		<form action="#" th:action="@{/department/save}"
+			th:object="${department}" method="POST">
 			<input type="text" th:field="*{abbr}" class="form-control mb-4 col-4"
-				placeholder="Аббревиатура" required>
-				
-			<input type="text" th:field="*{name}" class="form-control mb-4 col-4"
-				placeholder="Полное название" required>
-				
-			<select class="form-control selectpicker mb-4 col-4" th:field="*{faculty}" name="facultyId">
-								<option th:each="tempFaculty : ${faculties}"
-                                th:value="${tempFaculty.id}"
-                                th:text="${tempFaculty.name}">
-                        </option>
-						</select>
+				placeholder="Аббревиатура" required> <input type="text"
+				th:field="*{name}" class="form-control mb-4 col-4"
+				placeholder="Полное название" required> <select
+				class="form-control selectpicker mb-4 col-4" th:field="*{faculty}"
+				name="facultyId">
+				<option th:each="tempFaculty : ${faculties}"
+					th:value="${tempFaculty.id}" th:text="${tempFaculty.name}">
+				</option>
+			</select>
 
 			<button type="submit" class="btn btn-info col-2">Сохранить</button>
 		</form>

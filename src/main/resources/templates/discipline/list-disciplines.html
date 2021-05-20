@@ -56,7 +56,8 @@
 			Всего: [[${totalItems}]]
 			<ul class="pagination">
 				<span th:each="i: ${#numbers.sequence(1, totalPages)}">
-					<li class="page-item"><a class="page-link" th:href="@{'/discipline/list/'+${i}}">[[${i}]]</a></li>
+					<li class="page-item"><a class="page-link"
+						th:href="@{'/discipline/list/'+${i}}">[[${i}]]</a></li>
 				</span>
 
 			</ul>

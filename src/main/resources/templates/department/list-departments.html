@@ -40,7 +40,8 @@
 				<tr th:each="tempDepartment : ${departments}">
 					<td th:text="${tempDepartment.abbr}" />
 					<td th:text="${tempDepartment.name}" />
-					<td th:text="${tempDepartment.faculty} ? ${tempDepartment.faculty.name} : 'Не назначен'" />
+					<td
+						th:text="${tempDepartment.faculty} ? ${tempDepartment.faculty.name} : 'Не назначен'" />
 					<td><a
 						th:href="@{/department/showFormForUpdate (departmentId=${tempDepartment.abbr})}"
 						class="btn btn-info btn-sm">Обновить</a> <a
@@ -55,7 +56,8 @@
 			Всего: [[${totalItems}]]
 			<ul class="pagination">
 				<span th:each="i: ${#numbers.sequence(1, totalPages)}">
-					<li class="page-item"><a class="page-link" th:href="@{'/department/list/'+${i}}">[[${i}]]</a></li>
+					<li class="page-item"><a class="page-link"
+						th:href="@{'/department/list/'+${i}}">[[${i}]]</a></li>
 				</span>
 
 			</ul>

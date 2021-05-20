@@ -1,43 +1,23 @@
 package com.kvs.universityapplication.entity;
 
 
+import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="department")
 public class Department {
 	
 	// сделать аббревиатуру
-	@Id
-	@Column(name="abbr")
+
 	private String abbr;
 	
-	@Column(name="name")
 	private String name;
 	
-	@ManyToOne(fetch=FetchType.LAZY, cascade= {CascadeType.DETACH, CascadeType.MERGE,
-			CascadeType.PERSIST, CascadeType.REFRESH})
-	@JoinColumn(name="faculty_id")
 	private Faculty faculty;
 
-	@OneToMany(fetch=FetchType.LAZY,mappedBy = "department", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
-			CascadeType.REFRESH })
-	private Set<Group> groups; 
-	
-	@OneToMany(fetch=FetchType.LAZY,mappedBy = "department", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
-			CascadeType.REFRESH })
+	private Set<Group> groups = new HashSet<>(); 
+
 	private Set<Teacher> teachers;
-	
 	
 	public Department() {
 		
@@ -88,6 +68,10 @@ public class Department {
 		this.abbr = abbr;
 	}
 
+	public void addGroup(Group group) {
+		groups.add(group);
+		group.setDepartment(this);
+	}
 	
 	
 	

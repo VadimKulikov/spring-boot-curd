@@ -12,13 +12,14 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
 	crossorigin="anonymous">
-	
+
 <!-- JQuery -->
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    
-    <script type="text/javascript">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script type="text/javascript">
    	 $(function() {
     		$("#department_name").autocomplete({
     			 source: "departmentAutocomplete",
@@ -39,15 +40,13 @@
 
 		<form action="#" th:action="@{/group/save}" th:object="${group}"
 			method="POST">
-			<input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder="Название" required>
-			<input type="text" th:field="*{year}" class="form-control mb-4 col-4" placeholder="Год поступления" required>
-			<input type="text" id="department_name" th:field="*{department}" class="form-control mb-4 col-4" placeholder="Кафедра">
+			<input type="text" th:field="*{name}" class="form-control mb-4 col-4"
+				placeholder="Название" required> <input type="text"
+				th:field="*{year}" class="form-control mb-4 col-4"
+				placeholder="Год поступления" required> <input type="text"
+				id="department_name" th:field="*{department}"
+				class="form-control mb-4 col-4" placeholder="Кафедра">
 
-
-			
-			<!--  <select class="form-control selectpicker mb-4 col-4" th:field="*{department}" name="departmentId">
-				<option th:each="tempFaculty : ${faculties}" th:value="${tempFaculty.id}" th:text="${tempFaculty.name}"> </option>
-			</select> -->
 			<button type="submit" class="btn btn-info col-2">Сохранить</button>
 		</form>
 		<hr>

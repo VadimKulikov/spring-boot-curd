@@ -12,12 +12,13 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
 	crossorigin="anonymous">
-	
+
 <!-- JQuery -->
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 
 <title>Сохранить студента</title>
 </head>
@@ -29,18 +30,24 @@
 
 		<p class="h4 mb-4">Сохранить студента</p>
 
-		<form action="#" th:action="@{'/student/'+${groupName}+'/save'}" th:object="${student}"
-			method="POST">
-			<input type="hidden" th:field="*{group}">
-			<input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder="Имя" required>
-			<input type="text" th:field="*{surname}" class="form-control mb-4 col-4" placeholder="Фамилия" required>
-			<input type="text" th:field="*{schoolDiploma.number}" class="form-control mb-4 col-4" placeholder="Номер аттестата" required>
-			<input type="text" th:field="*{schoolDiploma.year}" class="form-control mb-4 col-4" placeholder="Год получения аттестата" required>
-			
+		<form action="#" th:action="@{'/student/'+${groupName}+'/save'}"
+			th:object="${student}" method="POST">
+			<input type="hidden" th:field="*{group}"> <input
+				type="hidden" th:field="*{id}"> <input type="text"
+				th:field="*{name}" class="form-control mb-4 col-4" placeholder="Имя"
+				required> <input type="text" th:field="*{surname}"
+				class="form-control mb-4 col-4" placeholder="Фамилия" required>
+			<input type="text" th:field="*{schoolDiploma.number}"
+				class="form-control mb-4 col-4" placeholder="Номер аттестата"
+				required> <input type="text"
+				th:field="*{schoolDiploma.year}" class="form-control mb-4 col-4"
+				placeholder="Год получения аттестата" required>
+
 			<button type="submit" class="btn btn-info col-2">Сохранить</button>
 		</form>
 		<hr>
-		<a th:href="@{'/student/list/'+${groupName}}">К списку студентов группы</a>
+		<a th:href="@{'/student/list/'+${groupName}}">К списку студентов
+			группы</a>
 	</div>
 </body>
 

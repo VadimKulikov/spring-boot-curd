@@ -6,7 +6,6 @@ import org.springframework.data.domain.Page;
 
 import com.kvs.universityapplication.entity.Teacher;
 
-
 public interface TeacherService {
 	public List<Teacher> findAll();
 

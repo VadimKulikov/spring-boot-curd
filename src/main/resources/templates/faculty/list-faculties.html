@@ -43,20 +43,19 @@
 					<td th:text="${tempFaculty.id}" />
 					<td th:text="${tempFaculty.name}" />
 					<td th:text="${tempFaculty.departments}" />
-					
+
 					<td><a
 						th:href="@{/faculty/showFormForUpdate (facultyId=${tempFaculty.id})}"
-						class="btn btn-info btn-sm">Обновить</a> 
-						<a th:href="@{/faculty/delete (facultyId=${tempFaculty.id})}"
+						class="btn btn-info btn-sm">Обновить</a> <a
+						th:href="@{/faculty/delete (facultyId=${tempFaculty.id})}"
 						class="btn btn-danger btn-sm"
-						onclick="if (!(confirm('Удалить?'))) return false">Удалить</a>
-						</td>
+						onclick="if (!(confirm('Удалить?'))) return false">Удалить</a></td>
 
 				</tr>
-				
+
 			</tbody>
 		</table>
-		
+
 		<hr>
 		<a th:href="@{/}">В главное меню</a>
 

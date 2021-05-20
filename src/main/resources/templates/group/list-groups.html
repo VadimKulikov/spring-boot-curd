@@ -39,9 +39,10 @@
 			<tbody>
 				<tr th:each="tempGroup : ${groups}">
 
-					<td> <a th:href="@{'/student/list/'+${tempGroup.name}}">[[${tempGroup.name}]]</a></td>
+					<td><a th:href="@{'/student/list/'+${tempGroup.name}}">[[${tempGroup.name}]]</a></td>
 					<td th:text="${tempGroup.year}" />
-					<td th:text="${tempGroup.department} ? ${tempGroup.department.name} : 'Не назначена'" />
+					<td
+						th:text="${tempGroup.department} ? ${tempGroup.department.name} : 'Не назначена'" />
 					<td><a
 						th:href="@{/group/showFormForUpdate (groupId=${tempGroup.name})}"
 						class="btn btn-info btn-sm">Обновить</a> <a
@@ -56,7 +57,8 @@
 			Всего: [[${totalItems}]]
 			<ul class="pagination">
 				<span th:each="i: ${#numbers.sequence(1, totalPages)}">
-					<li class="page-item"><a class="page-link" th:href="@{'/group/list/'+${i}}">[[${i}]]</a></li>
+					<li class="page-item"><a class="page-link"
+						th:href="@{'/group/list/'+${i}}">[[${i}]]</a></li>
 				</span>
 
 			</ul>
