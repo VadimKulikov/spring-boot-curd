@@ -5,8 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-//import javax.transaction.Transactional;
-
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -74,6 +72,14 @@ public class TeacherSqlRepository {
 		Discipline discipline = new Discipline();
 		discipline.setName(rs.getString("discipline_name"));
 		return discipline;
+	}
+
+	public List<Teacher> findAll() {
+		String sql = "select teacher.id, teacher.name, teacher.surname, teacher.patronymic, teacher.department_name, \r\n"
+				+ "teacher.academic_title , teacher_discipline.discipline_name \r\n" + "from teacher\r\n"
+				+ "left join teacher_discipline on teacher_discipline.teacher_id = teacher.id\r\n"
+				+ "order by teacher.id";
+		return jdbcTemplate.query(sql, MAPPER);
 	}
 
 	public Page<Teacher> findAll(Pageable pageable) {

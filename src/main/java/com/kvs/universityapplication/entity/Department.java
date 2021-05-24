@@ -1,26 +1,22 @@
 package com.kvs.universityapplication.entity;
 
-
 import java.util.HashSet;
 import java.util.Set;
 
-
 public class Department {
-	
-	// сделать аббревиатуру
 
 	private String abbr;
-	
+
 	private String name;
-	
+
 	private Faculty faculty;
 
-	private Set<Group> groups = new HashSet<>(); 
+	private Set<Group> groups = new HashSet<>();
 
 	private Set<Teacher> teachers;
-	
+
 	public Department() {
-		
+
 	}
 
 	public String getName() {
@@ -72,7 +68,5 @@ public class Department {
 		groups.add(group);
 		group.setDepartment(this);
 	}
-	
-	
-	
+
 }

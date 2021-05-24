@@ -1,17 +1,15 @@
 package com.kvs.universityapplication.entity;
 
-
 public class Discipline {
-	
 
 	private String name;
-	
+
 	private int duration;
-	
+
 	private int semester;
-	
+
 	public Discipline() {
-		
+
 	}
 
 	public String getName() {
@@ -42,7 +40,5 @@ public class Discipline {
 	public String toString() {
 		return name;
 	}
-	
-	
 
 }

@@ -1,7 +1,13 @@
 package com.kvs.universityapplication.controller;
 
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -16,8 +22,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kvs.universityapplication.entity.Department;
 import com.kvs.universityapplication.entity.Teacher;
+import com.kvs.universityapplication.exporter.TeacherExcelExporter;
+import com.kvs.universityapplication.exporter.TeacherPdfExporter;
 import com.kvs.universityapplication.service.DepartmentService;
 import com.kvs.universityapplication.service.TeacherService;
+import com.lowagie.text.DocumentException;
 
 @Controller
 @RequestMapping("/teacher")
@@ -93,5 +102,41 @@ public class TeacherController {
 		teacherService.deleteById(id);
 
 		return "redirect:/teacher/list";
+	}
+
+	@GetMapping("/export/excel")
+	public void exportToExcel(HttpServletResponse response) throws IOException {
+		response.setContentType("application/octet-stream");
+		response.setCharacterEncoding("UTF-8");
+		DateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
+		String currentDateTime = dateFormatter.format(new Date());
+
+		String headerKey = "Content-Disposition";
+		String headerValue = "attachment; filename=teachers_" + currentDateTime + ".xlsx";
+		response.setHeader(headerKey, headerValue);
+
+		List<Teacher> listTeachers = teacherService.findAll();
+
+		TeacherExcelExporter excelExporter = new TeacherExcelExporter(listTeachers);
+
+		excelExporter.export(response);
+	}
+
+	@GetMapping("/export/pdf")
+	public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
+		response.setContentType("application/pdf");
+		response.setCharacterEncoding("UTF-8");
+		DateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
+		String currentDateTime = dateFormatter.format(new Date());
+
+		String headerKey = "Content-Disposition";
+		String headerValue = "attachment; filename=teachers_" + currentDateTime + ".pdf";
+		response.setHeader(headerKey, headerValue);
+
+		List<Teacher> teachers = teacherService.findAll();
+
+		TeacherPdfExporter exporter = new TeacherPdfExporter(teachers);
+		exporter.export(response);
+
 	}
 }

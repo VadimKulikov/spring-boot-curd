@@ -23,7 +23,7 @@ public class TeacherServiceImpl implements TeacherService {
 
 	@Override
 	public List<Teacher> findAll() {
-		return null;
+		return teacherRepository.findAll();
 	}
 
 	@Override
