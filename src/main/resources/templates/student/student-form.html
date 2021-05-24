@@ -32,6 +32,7 @@
 		<form action="#" th:action="@{'/student/'+${groupName}+'/save'}" th:object="${student}"
 			method="POST">
 			<input type="hidden" th:field="*{group}">
+			<input type="hidden" th:field="*{id}">
 			<input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder="Имя" required>
 			<input type="text" th:field="*{surname}" class="form-control mb-4 col-4" placeholder="Фамилия" required>
 			<input type="text" th:field="*{schoolDiploma.number}" class="form-control mb-4 col-4" placeholder="Номер аттестата" required>

@@ -37,32 +37,32 @@ public class FacultyController {
 	public String showFormForAdd(Model theModel) {
 
 		Faculty faculty = new Faculty();
-		
+
 		theModel.addAttribute("faculty", faculty);
-		
+
 		return "faculty/faculty-form";
 	}
-	
+
 	@GetMapping("/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("facultyId") int id, Model theModel) {
-		
+
 		Faculty faculty = facultyService.findById(id);
-		
-		theModel.addAttribute("faculty",faculty);
-		
+
+		theModel.addAttribute("faculty", faculty);
+
 		return "faculty/faculty-form";
 	}
-	
+
 	@PostMapping("/save")
 	public String saveFaculty(@ModelAttribute("faculty") Faculty faculty) {
 		facultyService.save(faculty);
 		return "redirect:/faculty/list";
 	}
-	
+
 	@GetMapping("/delete")
 	public String delete(@RequestParam("facultyId") int id) {
 		facultyService.deleteById(id);
-		
+
 		return "redirect:/faculty/list";
 	}
 

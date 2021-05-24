@@ -1,39 +1,20 @@
 package com.kvs.universityapplication.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-@Entity
-@Table(name="groups")
 public class Group {
-	
-	@Id
-	@Column(name="name")
+
 	private String name;
-	
-	@Column(name="year")
+
 	private int year;
-	
-	@ManyToOne(fetch=FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE,
-			CascadeType.PERSIST, CascadeType.REFRESH})
-	@JoinColumn(name="department_name")
+
 	private Department department;
-	
-	@OneToMany(fetch = FetchType.LAZY ,mappedBy = "group", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
-			CascadeType.REFRESH })
-	private Set<Student> students;
-	
+
+	private Set<Student> students = new HashSet<>();
+
 	public Group() {
-		
+
 	}
 
 	public String getName() {
@@ -67,7 +48,16 @@ public class Group {
 	public void setStudents(Set<Student> students) {
 		this.students = students;
 	}
-	
 
+	public void addStudent(Student student) {
+		this.students.add(student);
+		student.setGroup(this);
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return name;
+	}
 
 }

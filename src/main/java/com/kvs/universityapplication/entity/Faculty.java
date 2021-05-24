@@ -3,34 +3,21 @@ package com.kvs.universityapplication.entity;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-
-@Entity
-@Table(name = "faculty")
 public class Faculty {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+
 	private int id;
 
-	@Column(name = "name")
 	private String name;
 
-	@OneToMany(fetch = FetchType.LAZY ,mappedBy = "faculty", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
-			CascadeType.REFRESH })
 	private Set<Department> departments = new HashSet<>();
 
 	public Faculty() {
-		
+
+	}
+
+	public Faculty(int id, String name) {
+		this.id = id;
+		this.name = name;
 	}
 
 	public int getId() {
@@ -54,13 +41,17 @@ public class Faculty {
 		return name;
 	}
 
-
 	public Set<Department> getDepartments() {
 		return departments;
 	}
 
 	public void setDepartments(Set<Department> departments) {
 		this.departments = departments;
+	}
+
+	public void addDepartment(Department department) {
+		department.setFaculty(this);
+		departments.add(department);
 	}
 
 }

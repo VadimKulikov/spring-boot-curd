@@ -1,37 +1,29 @@
 package com.kvs.universityapplication.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.kvs.universityapplication.dao.FacultyRepository;
+import com.kvs.universityapplication.dao.FacultyProcRepository;
 import com.kvs.universityapplication.entity.Faculty;
 
 @Service
 public class FacultyServiceImpl implements FacultyService {
 
-	private FacultyRepository facultyRepository;
-	
-	public FacultyServiceImpl(FacultyRepository facultyRepo) {
+	private FacultyProcRepository facultyRepository;
+
+	public FacultyServiceImpl(FacultyProcRepository facultyRepo) {
 		facultyRepository = facultyRepo;
 	}
-	
+
 	@Override
 	public List<Faculty> findAll() {
-		return facultyRepository.findAllByOrderByNameAsc();
+		return facultyRepository.findAll();
 	}
 
 	@Override
 	public Faculty findById(int theId) {
-		Optional<Faculty> result = facultyRepository.findById(theId);
-		Faculty faculty = null;
-		if(result.isPresent()) {
-			faculty = result.get();
-		} else {
-			throw new RuntimeException("Didn't find faculty");
-		}
-		return faculty;
+		return facultyRepository.findById(theId);
 	}
 
 	@Override

@@ -5,9 +5,9 @@ import java.util.List;
 import com.kvs.universityapplication.entity.Student;
 
 public interface StudentService {
-	
+
 	public List<Student> findAll();
-	
+
 	public List<Student> findStudentsGroup(String groupName);
 
 	public Student findById(int theId);

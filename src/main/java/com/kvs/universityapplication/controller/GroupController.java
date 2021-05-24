@@ -3,7 +3,6 @@ package com.kvs.universityapplication.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,12 +55,11 @@ public class GroupController {
 
 		Group group = new Group();
 
-
 		theModel.addAttribute("group", group);
 
 		return "group/group-form";
 	}
-	
+
 	@PostMapping("/save")
 	public String saveGroup(@ModelAttribute("group") Group group) {
 		groupService.save(group);
@@ -74,26 +72,26 @@ public class GroupController {
 		List<Department> departments = departmentService.findAll();
 		List<String> departmentNames = new ArrayList<>();
 		for (Department d : departments) {
-			if (d.getName().contains(term)) {
-				departmentNames.add(d.getName());
+			if (d.getAbbr().contains(term)) {
+				departmentNames.add(d.getAbbr());
 			}
 		}
 		return departmentNames;
 	}
-	
+
 	@GetMapping("/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("groupId") String name, Model theModel) {
-		
+
 		Group group = groupService.findById(name);
 		theModel.addAttribute("group", group);
-		
+
 		return "group/group-form";
 	}
-	
+
 	@GetMapping("/delete")
 	public String deleteGroup(@RequestParam("groupId") String name) {
 		groupService.deleteById(name);
-		
+
 		return "redirect:/group/list";
 	}
 
